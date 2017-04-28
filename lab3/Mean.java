@@ -14,7 +14,7 @@ public class Mean {
         return total/list.size();
     }
 
-    public double ugStandasrdDev (ArrayList<Double> list){
+    public double ugStandardDev (ArrayList<Double> list){
         double mean = meanUngrouped(list);
         double total = 0;
         double s = 0;
@@ -24,4 +24,42 @@ public class Mean {
         s = Math.sqrt(total/list.size()-1);
         return s;
     }
+
+    public double meanGrouped (ArrayList<Double> fx, ArrayList<Double> frequency){
+        double total1 = 0;
+        double total2 = 0;
+
+        for (int i = 0; i < fx.size();i++){
+            total1 += fx.get(i);
+        }
+
+        for (int i = 0; i < frequency.size();i++){
+            total2 += frequency.get(i);
+        }
+        return total1/total2;
+    }
+
+    public double gStandardDev(ArrayList<Double> frequency, ArrayList<Double> fx, ArrayList<Double> fx2){
+        double total1 = 0;
+        double total2 = 0;
+        double total3 = 0;
+        double s;
+
+        for (int i = 0; i < fx.size();i++){
+            total1 += fx.get(i);
+        }
+
+        for (int i = 0; i < frequency.size();i++){
+            total2 += frequency.get(i);
+        }
+
+        for (int i = 0; i < fx2.size();i++){
+            total3 += fx2.get(i);
+        }
+
+        s = Math.sqrt(((total2*total3) - (total1*total1))/(total2*(total2-1)));
+
+        return  s;
+    }
+
 }
